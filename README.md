@@ -103,7 +103,7 @@ See [4] for more details about the notations of the circuit.
 
 One can check that for any input $\ket{s1,s2}$ on the first two modes, we get an output of the form 
 
-$$ (-1)^{s_1s_2} \sqrt{\frac{2}{27}} \ket{s_1,s_2} \ket{1,1} + \alpha \ket{*}\ket{0,0} + \beta \ket{*}\ket{0,1} + \gamma \ket{*}\ket{1,0} $$
+$$ (-1)^{s_1s_2} \sqrt{\frac{2}{27}} \ket{s_1,s_2} \ket{1,1} + \alpha \ket{\*}\ket{0,0} + \beta \ket{*}\ket{0,1} + \gamma \ket{\*}\ket{1,0} $$
 
 ## 4. Goal of the challenge 
 

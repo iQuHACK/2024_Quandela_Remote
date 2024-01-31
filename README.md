@@ -48,7 +48,7 @@ $$ \begin{pmatrix} 1 & \\\ & e^{i\theta} \end{pmatrix}. $$
 
 An example of circuit is given in Fig.1 with the corresponding unitary applied. 
 
-<center>  <img src="./lo_circuit.pdf"> </center>
+<center>  <img src="images/lo_circuit.pdf"> </center>
 
 <center> Fig.1: example of a linear optical circuit with the corresponding unitary. </center>
 
@@ -62,7 +62,7 @@ Perceval can generate such universal chips for you and choose the angles to impl
 
 For near-term applications, photonic hardware essentially relies on using a chip with an encoding to mimic the quantum circuit approach. For instance, in the dual rail encoding, one qubit is encoded as a photon that can be in two different spatial modes (thus encoding the $\ket{0}$ and $\ket{1}$ states) and the concatenation of $n$ photons with $2n$ modes gives an $n$-qubit quantum system. Note that at any moment each photon stays in its pair of modes.
 
-<center> <img src="./dual_rail.pdf"> </center>
+<center> <img src="images/dual_rail.pdf"> </center>
 
 Fig.3: illustration of the dual rail encoding. Each photon stays in a pair of modes to encode a 2-level system. Here the input in qubit notation is $\ket{011}$. Any $2$-mode unitary $U$ applied to one pair of modes is equivalent to a $1$-qubit unitary. 
 
@@ -80,7 +80,7 @@ with **Fock state** notations. The constraints $s_1, s_2 \leq 1$ are ensured by 
 
 So far, the best known scheme to do a CZ gate is Knill's version given in Fig.4 that has a probability of success of 2/27 [5]. It requires two extra photons, two extra modes and the gate is implemented if one photon is detected in each auxiliary mode.
 
-<center>  <img src="./knill_cz.png"> </center>
+<center>  <img src="images/knill_cz.png"> </center>
 
 Fig.4: Knill's implementation of the CZ gate with corresponding matrix 
 
@@ -108,7 +108,7 @@ Using standard circuit decomposition, the CCZ gate can be implemented as in Fig.
 
 In [6], they investigate the numerical search of a Toffoli gate, with promising results. However they do not provide a linear optical to check their result. You can start by trying to reproduce their results before improving on their work. 
 
-<center>  <img src="./ccz.png"> </center>
+<center>  <img src="images/ccz.png"> </center>
 
 Fig.5: decomposition of a CCZ gate in terms of CNOT and T gates.
 
@@ -124,11 +124,11 @@ which is equivalent to applying two CZ gates. Can we do better with a direct imp
 
 Fig.6 and Fig.7 gives a recap of the two gates we are looking for in a Fock state formalism.
 
-<center>  <img src="./toffoli.pdf"> </center>
+<center>  <img src="images/toffoli.pdf"> </center>
 
 Fig.6: the CCZ gate at the Fock state level. 
 
-<center>  <img src="./special_cz.pdf"> </center>
+<center>  <img src="images/special_cz.pdf"> </center>
 
 Fig.7: the CZ gate with an hybrid encoding.
 

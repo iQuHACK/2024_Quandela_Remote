@@ -48,7 +48,7 @@ $$ \begin{pmatrix} 1 & \\\ & e^{i\theta} \end{pmatrix}. $$
 
 An example of circuit is given in Fig.1 with the corresponding unitary applied. 
 
-<center>  <img src="images/lo_circuit.pdf"> </center>
+<center>  <img src="images/lo_circuit.jpg"> </center>
 
 <center> Fig.1: example of a linear optical circuit with the corresponding unitary. </center>
 
@@ -62,7 +62,7 @@ Perceval can generate such universal chips for you and choose the angles to impl
 
 For near-term applications, photonic hardware essentially relies on using a chip with an encoding to mimic the quantum circuit approach. For instance, in the dual rail encoding, one qubit is encoded as a photon that can be in two different spatial modes (thus encoding the $\ket{0}$ and $\ket{1}$ states) and the concatenation of $n$ photons with $2n$ modes gives an $n$-qubit quantum system. Note that at any moment each photon stays in its pair of modes.
 
-<center> <img src="images/dual_rail.pdf"> </center>
+<center> <img src="images/dual_rail.jpg"> </center>
 
 Fig.3: illustration of the dual rail encoding. Each photon stays in a pair of modes to encode a 2-level system. Here the input in qubit notation is $\ket{011}$. Any $2$-mode unitary $U$ applied to one pair of modes is equivalent to a $1$-qubit unitary. 
 
@@ -124,11 +124,11 @@ which is equivalent to applying two CZ gates. Can we do better with a direct imp
 
 Fig.6 and Fig.7 gives a recap of the two gates we are looking for in a Fock state formalism.
 
-<center>  <img src="images/toffoli.pdf"> </center>
+<center>  <img src="images/toffoli.jpg"> </center>
 
 Fig.6: the CCZ gate at the Fock state level. 
 
-<center>  <img src="images/special_cz.pdf"> </center>
+<center>  <img src="images/special_cz.jpg"> </center>
 
 Fig.7: the CZ gate with an hybrid encoding.
 

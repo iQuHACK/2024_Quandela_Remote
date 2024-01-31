@@ -1,7 +1,7 @@
 # Quandela iQuHACK 2024 Remote Challenge
 
 
-#### 1. Quick overview of linear optics
+## 1. Quick overview of linear optics
 
 Linear optics describe the evolution of photons passing through a linear interferometer. Given a circuit with $m$ modes and $n$ photons, we use the Fock state notation 
 $$\ket{s_1,s_2, ..., s_m}, s_1+s_2+...+s_m = n$$ 
@@ -35,3 +35,15 @@ For more details about the formalism see [1].
 Given $U$ and an input state $\ket{s}$, Perceval can compute for you the coefficients $\alpha_t \sqrt{t_1!...t_m!}$ with two backends: 
 - the Naive backend which gives you one specific coefficient for a chosen $\ket{t}$,
 - the SLOS backend which gives you all coefficients.
+
+## 2. Linear optical circuits 
+
+The unitary operator applied can be itself described as a linear optical circuit made of constant beam splitters and parameterized phase shifters arranged in a fixed architecture also called a chip. A beam splitter applies the 2-mode unitary transformation 
+
+$$ \begin{pmatrix} 1 & i \\\ i & 1 \end{pmatrix} $$ 
+
+and a phase shifter parameterized by an angle $\theta$ applies the 1-mode transformation 
+
+$$ \begin{pmatrix} 1 & \\\ & e^{i\theta} \end{pmatrix}. $$
+
+An example of circuit is given in Fig.1 with the corresponding unitary applied. 

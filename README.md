@@ -24,7 +24,7 @@ and the output state is given by
 
 $$ \ket{\psi_{out}} = \frac{1}{\sqrt{s_1! s_2! ... s_m!}} \prod_{i=1}^n \bigg(\sum_{j=1}^m u_{ji} a_j^\dagger \bigg)^{s_i} \ket{000...0}.$$ 
 
-Developping the product gives a linear superposition of Fock states:
+Developing the product gives a linear superposition of Fock states:
 
 $$ \ket{\psi_{out}} = \frac{1}{\sqrt{s_1! s_2! ... s_m!}} \sum_{t \in \Phi_{m,n}} \alpha_t \sqrt{t_1!...t_m!} \ket{t_1,t_2,...,t_m}.$$ 
 
@@ -129,7 +129,7 @@ In [6], they investigate the numerical search of a Toffoli gate, with promising 
 Fig.5: decomposition of a CCZ gate in terms of CNOT and T gates.
 </p> 
 
-- a special CZ gate in an hybrid qubit encoding. We sligthly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits and the third mode that encodes the state $\ket{1}$ of the third qubit, we want to do the operation 
+- a special CZ gate in an hybrid qubit encoding. We slightly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits and the third mode that encodes the state $\ket{1}$ of the third qubit, we want to do the operation 
 
 $$ \ket{s_1,s_2,s_3} \to (-1)^{(s_1 + s_2)s_3} \ket{s_1,s_2,s_3}. $$
 

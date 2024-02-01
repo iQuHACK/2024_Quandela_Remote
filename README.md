@@ -162,6 +162,44 @@ Fig.7: the CZ gate with an hybrid encoding.
 
 Both analytical and numerical work are promising leads. Feel free to choose the ones you prefer/feel is the more promising! Keep in mind that analytical work, if they do not end up with a practical result, will be harder to judge than numerical results. We suggest to start by reproducing the results from [5] and then [6] which will already be a significant achievement. 
 
+## How to use Perceval to create a gate
+
+### What is Perceval
+Perceval is the framework that Quandela develop and you must use it to solve any of these challenges.
+
+Perceval provides tools for composing circuits from linear optical components, defining single-photon sources, manipulating Fock states, running simulations, reproducing published experimental papers and experimenting with a new generation of quantum algorithms.
+
+You can find documentation regarding Perceval here: https://perceval.quandela.net/docs/
+
+And the source code repository is here: https://github.com/Quandela/Perceval
+
+### Installation
+You have all the installation explanation on the github repository, we advise you to work on the version 0.10.3
+
+### What we expect
+We want you to build a [**Processor**](https://perceval.quandela.net/docs/reference/processor.html), it's an object that is composed by a Perceval circuit with input states, ports and heralding function.
+
+We **strongly** advise that you checkout the Perceval code and go read how we design our own catalog gates here in the Perceval project: perceval/components/core_catalog (or at least visit this github online [directory](https://github.com/Quandela/Perceval/tree/main/perceval/components/core_catalog) )
+
+As we want to autograde your work, we want you to follow a fixed architecture in your git repository.
+
+This is the architecture we want you to follow:
+```
+.
+├── main.py
+├── requirements.txt
+├── README.md
+```
+- main.py should contain a method called "get_CCZ" and/or "get_CZ" with no argument that return a perceval Processor
+- requirements.txt should contains the python package needed by your script
+- README.md is not strictly speaking mandatory but it's always a good idea to explain how to use your script and how you came up with this result(s)
+
+Others files can be included in you git repository (like other python files, jupyter notebook, ...) but they will not be use by our autograder, nevertheless those files could be use to give you bonus point if you are selected as finalist.
+
+### How the autograde works
+[TBD]
+
+
 #### References 
 
 [1] Aaronson, S., & Arkhipov, A. (2011, June). The computational complexity of linear optics. In Proceedings of the forty-third annual ACM symposium on Theory of computing (pp. 333-342).

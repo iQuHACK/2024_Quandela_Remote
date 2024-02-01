@@ -165,7 +165,7 @@ Both analytical and numerical work are promising leads. Feel free to choose the 
 ## How to use Perceval to create a gate
 
 ### What is Perceval
-Perceval is the framework that Quandela develop and you must use it to solve any of these challenges.
+Perceval is Quandela quantum simulation framework which **must** be used to solve any of these challenges
 
 Perceval provides tools for composing circuits from linear optical components, defining single-photon sources, manipulating Fock states, running simulations, reproducing published experimental papers and experimenting with a new generation of quantum algorithms.
 
@@ -176,14 +176,14 @@ And the source code repository is here: https://github.com/Quandela/Perceval
 ### Installation
 You have all the installation explanation on the github repository, we advise you to work on the version 0.10.3
 
+If you have any issue, please contact either Eric, Marion or Melvin from Quandela on Slack
+
 ### What we expect
-We want you to build a [**Processor**](https://perceval.quandela.net/docs/reference/processor.html), it's an object that is composed by a Perceval circuit with input states, ports and heralding function.
+The result of your work has to be a locally simulated [**Processor**](https://perceval.quandela.net/docs/reference/processor.html). The Processor class is a composition of a Perceval circuit with input states, ports and heralding function.
 
-We **strongly** advise that you checkout the Perceval code and go read how we design our own catalog gates here in the Perceval project: perceval/components/core_catalog (or at least visit this github online [directory](https://github.com/Quandela/Perceval/tree/main/perceval/components/core_catalog) )
+We **strongly** advise that you checkout the Perceval code and go read how we design our own gates in Perceval in perceval/components/core_catalog (or at least visit this github online [directory](https://github.com/Quandela/Perceval/tree/main/perceval/components/core_catalog) )
 
-As we want to autograde your work, we want you to follow a fixed architecture in your git repository.
-
-This is the architecture we want you to follow:
+As your work will be autograded, the main branch of your git repository is required to follow this file architecture:
 ```
 .
 ├── main.py
@@ -191,10 +191,10 @@ This is the architecture we want you to follow:
 ├── README.md
 ```
 - main.py should contain a method called "get_CCZ" and/or "get_CZ" with no argument that return a perceval Processor
-- requirements.txt should contains the python package needed by your script
+- requirements.txt should contain all your scripts' python module dependencies, and follow the [requirements format](https://pip.pypa.io/en/stable/reference/requirements-file-format/)
 - README.md is not strictly speaking mandatory but it's always a good idea to explain how to use your script and how you came up with this result(s)
 
-Others files can be included in you git repository (like other python files, jupyter notebook, ...) but they will not be use by our autograder, nevertheless those files could be use to give you bonus point if you are selected as finalist.
+Other files can be included in you git repository (like other python files, jupyter notebook, ...) but they will not be use by our autograder, nevertheless those files could be use to give you bonus point if you are selected as finalist.
 
 ### How the autograde works
 [TBD]

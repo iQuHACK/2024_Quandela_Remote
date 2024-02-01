@@ -1,6 +1,3 @@
-$$\newcommand{\ket}[1]{\left|{#1}\right\rangle}$$
-$$\newcommand{\bra}[1]{\left\langle{#1}\right|}$$
-
 #### 1. Quick overview of linear optics
 
 Linear optics describe the evolution of photons passing through a linear interferometer. Given a circuit with $m$ modes and $n$ photons, we use the Fock state notation 

@@ -37,7 +37,7 @@ Given $U$ and an input state $\ket{s}$, Perceval can compute for you the coeffic
 
 The unitary operator applied can be itself described as a linear optical circuit made of constant beam splitters and parameterized phase shifters arranged in a fixed architecture also called a chip. A beam splitter (BS) applies the 2-mode unitary transformation 
 
-$$ \begin{pmatrix} 1 & i \\\ i & 1 \end{pmatrix} $$ 
+$$ \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & i \\\ i & 1 \end{pmatrix} $$ 
 
 and a phase shifter (PS) parameterized by an angle $\theta$ applies the 1-mode transformation 
 

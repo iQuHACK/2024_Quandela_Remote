@@ -37,11 +37,11 @@ Given $U$ and an input state $\ket{s}$, Perceval can compute for you the coeffic
 
 The unitary operator applied can be itself described as a linear optical circuit made of constant beam splitters and parameterized phase shifters arranged in a fixed architecture also called a chip. A beam splitter (BS) applies the 2-mode unitary transformation 
 
-$$ \begin{pmatrix} 1 & i \\ i & 1 \end{pmatrix} $$ 
+$$ \begin{pmatrix} 1 & i \\\ i & 1 \end{pmatrix} $$ 
 
 and a phase shifter (PS) parameterized by an angle $\theta$ applies the 1-mode transformation 
 
-$$ \begin{pmatrix} 1 & \\ & e^{i\theta} \end{pmatrix}. $$
+$$ \begin{pmatrix} 1 & \\\ & e^{i\theta} \end{pmatrix}. $$
 
 An example of circuit is given in Fig.1 with the corresponding unitary applied. 
 
@@ -83,7 +83,7 @@ So far, the best known scheme to do a CZ gate is Knill's version given in Fig.3 
 
 The matrix of the circuit is 
 
-$$ U = \begin{pmatrix} -1/3 & -\sqrt{2}/3 & \sqrt{2}/3 & 2/3 \\ \sqrt{2}/3 & -1/3 & -2/3 & \sqrt{2}/3 \\ -\sqrt{3+\sqrt{6}}/3 & \sqrt{3 - \sqrt{6}}/3 & -\sqrt{(3+\sqrt{6})/2}/3 & \sqrt{1/6 - 1/(3\sqrt{6})} \\ -\sqrt{3-\sqrt{6}}/3 & -\sqrt{3+\sqrt{6}}/3 & -\sqrt{1/6-1/(3\sqrt{6})} & -\sqrt{(3+\sqrt{6})/2}/3\end{pmatrix}.$$ 
+$$ U = \begin{pmatrix} -1/3 & -\sqrt{2}/3 & \sqrt{2}/3 & 2/3 \\\ \sqrt{2}/3 & -1/3 & -2/3 & \sqrt{2}/3 \\\ -\sqrt{3+\sqrt{6}}/3 & \sqrt{3 - \sqrt{6}}/3 & -\sqrt{(3+\sqrt{6})/2}/3 & \sqrt{1/6 - 1/(3\sqrt{6})} \\\ -\sqrt{3-\sqrt{6}}/3 & -\sqrt{3+\sqrt{6}}/3 & -\sqrt{1/6-1/(3\sqrt{6})} & -\sqrt{(3+\sqrt{6})/2}/3\end{pmatrix}.$$ 
 
 
 

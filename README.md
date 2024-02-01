@@ -162,7 +162,9 @@ Fig.7: the CZ gate with an hybrid encoding.
 
 Both analytical and numerical work are promising leads. Feel free to choose the ones you prefer/feel is the more promising! Keep in mind that analytical work, if they do not end up with a practical result, will be harder to judge than numerical results. We suggest to start by reproducing the results from [5] and then [6] which will already be a significant achievement. 
 
-## How to use Perceval to create a gate
+Your mentors for this challenge will be Pierre-Emmanuel Emeriau and Samuel Horsch (on site) and Alexia Salavrakos and Timothé Goubalt (on Slack).
+
+## 5. How to use Perceval to create a gate
 
 ### What is Perceval
 Perceval is Quandela quantum simulation framework which **must** be used to solve any of these challenges
@@ -173,12 +175,16 @@ You can find documentation regarding Perceval here: https://perceval.quandela.ne
 
 And the source code repository is here: https://github.com/Quandela/Perceval
 
-### Installation
-You have all the installation explanation on the github repository, we advise you to work on the version 0.10.3
+### Installation & Use
+You have all the installation explanation on the github repository, we advise you to work on the version 0.10.3.
 
-If you have any issue, please contact either Eric, Marion or Melvin from Quandela on Slack
+A lot of notebooks are available our github (in docs/source/notebooks) or in our documentation to inspire you.
+
+If you have any issue, please contact either Marion Fabre (on site) or Eric Bertasi or Melvin Mathe (on Slack).
 
 ### What we expect
+Create a GitHub repository, either add us (our usernames are in your github challenge repo) or send us the link (if it's public), and commit your code in this repository so we can keep track of your contribution. **Only** the code in the **main** branch will be reviewed and will be part of your evaluation.
+
 The result of your work has to be a locally simulated [**Processor**](https://perceval.quandela.net/docs/reference/processor.html). The Processor class is a composition of a Perceval circuit with input states, ports and heralding function.
 
 We **strongly** advise that you checkout the Perceval code and go read how we design our own gates in Perceval in perceval/components/core_catalog (or at least visit this github online [directory](https://github.com/Quandela/Perceval/tree/main/perceval/components/core_catalog) )
@@ -192,13 +198,14 @@ As your work will be autograded, the main branch of your git repository is requi
 ```
 - main.py should contain a method called "get_CCZ" and/or "get_CZ" with no argument that return a perceval Processor
 - requirements.txt should contain all your scripts' python module dependencies, and follow the [requirements format](https://pip.pypa.io/en/stable/reference/requirements-file-format/)
-- README.md is not strictly speaking mandatory but it's always a good idea to explain how to use your script and how you came up with this result(s)
+- README.md explains how to use your script and how you came up with this result(s)
 
 Other files can be included in you git repository (like other python files, jupyter notebook, ...) but they will not be use by our autograder, nevertheless those files could be use to give you bonus point if you are selected as finalist.
 
 ### How the autograde works
 [TBD]
 
+Good luck!
 
 #### References 
 

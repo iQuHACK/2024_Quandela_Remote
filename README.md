@@ -119,7 +119,9 @@ which is equivalent to applying two CZ gates. Can we do better with a direct imp
 
 Fig.5 and Fig.6 gives a recap of the two gates we are looking for in a Fock state formalism.
 
-<center>  <img src="./images/toffoli.png"> </center>
+<p align="center">
+<img src="images/toffoli.png">
+</p> 
 
 <center>  <img src="./images/special_cz.png"> </center>
 

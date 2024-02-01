@@ -22,6 +22,7 @@ and the output state is given by
 $$ \ket{\psi_{out}} = \frac{1}{\sqrt{s_1! s_2! ... s_m!}} \prod_{i=1}^n \bigg(\sum_{j=1}^m u_{ji} a_j^{\dagger} \bigg)^{s_i} \ket{000...0}.$$ 
 
 Developping the product gives a linear superposition of Fock states:
+
 $$ \ket{\psi_{out}} = \frac{1}{\sqrt{s_1! s_2! ... s_m!}} \sum_{t \in \Phi_{m,n}} \alpha_t \sqrt{t_1!...t_m!} \ket{t_1,t_2,...,t_m}.$$ 
 
 For more details about the formalism see [1]. 
@@ -44,7 +45,7 @@ $$ \begin{pmatrix} 1 & \\ & e^{i\theta} \end{pmatrix}. $$
 
 An example of circuit is given in Fig.1 with the corresponding unitary applied. 
 
-<center>  <img src="./lo_circuit.png"> </center>
+<center>  <img src="./images/lo_circuit.png"> </center>
 
 Similarly to quantum circuits, the sequential composition is equivalent to matrix/matrix products. Where it differs is in the spatial composition where the direct sum is used.  Theoretical results guarantee that some chips are universal in the sense there always exists a set of angles of the beam splitters and phase shifters to implement any desired operator U [2,3].
 
@@ -56,7 +57,7 @@ Perceval can generate such universal chips for you and choose the angles to impl
 
 For near-term applications, photonic hardware essentially relies on using a chip with an encoding to mimic the quantum circuit approach. For instance, in the dual rail encoding, one qubit is encoded as a photon that can be in two different spatial modes (thus encoding the $\ket{0}$ and $\ket{1}$ states) and the concatenation of $n$ photons with $2n$ modes gives an $n$-qubit quantum system. Note that at any moment each photon stays in its pair of modes.
 
-<center> <img src="./dual_rail.png"> </center>
+<center> <img src="./images/dual_rail.png"> </center>
 
 If one-qubit gates can be easily implemented by doing some local 2-mode operations (see Fig.2), unfortunately it is known that entangling 2-qubit gates cannot be implemented with the use of linear optics only. We need auxiliary modes and photons and some postselection schemes on the auxiliary modes to implement entangling gates [4]. Roughly, with auxiliary photons and modes, the output state is now a sum of a desired state (on which the correct 2-qubit gate has been applied) and a garbage state 
 
@@ -72,7 +73,7 @@ with **Fock state** notations. The constraints $s_1, s_2 \leq 1$ are ensured by 
 
 So far, the best known scheme to do a CZ gate is Knill's version given in Fig.3 that has a probability of success of 2/27 [5]. It requires two extra photons, two extra modes and the gate is implemented if one photon is detected in each auxiliary mode.
 
-<center>  <img src="./knill_cz.png"> </center>
+<center>  <img src="./images/knill_cz.png"> </center>
 
 The matrix of the circuit is 
 
@@ -104,7 +105,7 @@ Using standard circuit decomposition, the CCZ gate can be implemented as in Fig.
 
 In [6], they investigate the numerical search of a Toffoli gate, with promising results. However they do not provide a linear optical to check their result. You can start by trying to reproduce their results before improving on their work. 
 
-<center>  <img src="./ccz.png"> </center>
+<center>  <img src="./images/ccz.png"> </center>
 
 - a special CZ gate in an hybrid qubit encoding. We sligthly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits (resp. $s_1$ and $s_2$) and the third mode that encodes the state $\ket{1}$ of the third qubit ($s_3$), we want to do the operation 
 
@@ -118,9 +119,9 @@ which is equivalent to applying two CZ gates. Can we do better with a direct imp
 
 Fig.5 and Fig.6 gives a recap of the two gates we are looking for in a Fock state formalism.
 
-<center>  <img src="./toffoli.png"> </center>
+<center>  <img src="./images/toffoli.png"> </center>
 
-<center>  <img src="./special_cz.png"> </center>
+<center>  <img src="./images/special_cz.png"> </center>
 
 Note that the behavior of the gates is not defined for larger number of photons. We do not care as these cases will never happen if we stay in the chosen encoding.
 

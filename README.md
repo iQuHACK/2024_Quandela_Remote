@@ -89,7 +89,7 @@ $$ U = \begin{pmatrix} -1/3 & -\sqrt{2}/3 & \sqrt{2}/3 & 2/3 \\\ \sqrt{2}/3 & -1
 
 One can check that for any input $\ket{s1,s2}$ on the first two modes, $s_1, s_2 \leq 1$, we get an output of the form 
 
-$$ (-1)^{s_1s_2} \sqrt{\frac{2}{27}} \ket{s_1,s_2} \ket{1,1} + \alpha \ket{*}\ket{0,0} + \beta \ket{*}\ket{0,1} + \gamma \ket{*}\ket{1,0} $$
+$$ (-1)^{s_1s_2} \sqrt{\frac{2}{27}} \ket{s_1,s_2} \ket{1,1} + \alpha \ket{\star} \ket{0,0} + \beta \ket{\star} \ket{0,1} + \gamma \ket{\star}\ket{1,0} $$
 
 and postselecting on the two auxiliary modes ensures we get the correct result.
 

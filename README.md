@@ -189,7 +189,59 @@ As your work will be autograded, the main branch of your git repository is requi
 Other files can be included in you git repository (like other python files, jupyter notebook, ...) but they will not be use by our autograder, nevertheless those files could be use to give you bonus point if you are selected as finalist.
 
 ### How the autograde works
+Our autograder will rate 4 parameters, from the most to the less important:
+- Fidelity
+- Performance
+- Number of Photon (ancillaries included)
+- Number of Modes (heralds and ancillaries included)
 
+#### Fidelity
+Our Fidelity is the distance between your gate and the theoretical perfect one. It's calculating with the distance between probabilities.
+
+#### Performance
+This is a ratio of how many measurement we keep and how many measurement we throw away.
+
+For instance, for Knill's CZ gate, the performance as stated above is 2/27.
+
+#### Analyzer object
+To get Fidelity and Performance, you can use the Analyzer. 
+
+This object has been presented in the remote Perceval workshop with the notebook "Getting started with Perceval".
+
+Since the Analyzer can only inspect logical space, you can change your CZ or CCZ gate to CNOT or CCNOT (Toffoli) by adding Hadamard gates around the data qubit:
+``` python
+import perceval as pcvl
+
+processor = pcvl.Processor("SLOS", 4)
+processor.add(2, pcvl.BS.H())
+processor.add(0, pcvl.catalog["heralded cz"].build_processor())
+processor.add(2, pcvl.BS.H())
+
+states = {
+    pcvl.BasicState([1, 0, 1, 0]): "00",
+    pcvl.BasicState([1, 0, 0, 1]): "01",
+    pcvl.BasicState([0, 1, 1, 0]): "10",
+    pcvl.BasicState([0, 1, 0, 1]): "11"
+}
+
+ca = pcvl.algorithm.Analyzer(processor, states)
+
+truth_table = {"00": "00", "01": "01", "10": "11", "11": "10"}
+ca.compute(expected=truth_table)
+
+pcvl.pdisplay(ca)
+print(
+    f"performance = {ca.performance}, fidelity = {ca.fidelity.real}")
+```
+Output:
+```bash
+    00	01	10	11
+00	1	0	0	0
+01	0	1	0	0
+10	0	0	0	1
+11	0	0	1	0
+performance = 1/9, fidelity = 100.0%
+```
 
 Good luck!
 

@@ -95,9 +95,7 @@ and postselecting on the two auxiliary modes ensures we get the correct result.
 
 #### 4. Goal of the challenge 
 
-The goal of this challenge is to better understand the link between the linear optical circuit as a unitary on the modes and the resulting unitary operator on the Fock space and how we can design the search of more complex linear optical gates. To assess the quality of your work, we propose two $3$-mode linear optical gates to implement. 
-
-- the CCZ gate. At the qubit level, a CCZ gate applies the operation 
+The goal of this challenge is to better understand the link between the linear optical circuit as a unitary on the modes and the resulting unitary operator on the Fock space and how we can design the search of more complex linear optical gates. To assess the quality of your work, we propose a $3$-mode linear optical gate to implement: the CCZ gate. At the qubit level, a CCZ gate applies the operation 
 
 $$ CCZ \ket{x_1, x_2, x_3} = (-1)^{x_1x_2x_3} \ket{x_1, x_2, x_3} $$ 
 
@@ -115,28 +113,6 @@ In [6], they investigate the numerical search of a Toffoli gate, with promising 
 <img src="images/ccz.png">
 </p> 
 
-- a special CZ gate in an hybrid qubit encoding. We slightly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits (resp. $s_1$ and $s_2$) and the third mode that encodes the state $\ket{1}$ of the third qubit ($s_3$), we want to do the operation 
-
-$$ \ket{s_1,s_2,s_3} \to (-1)^{(s_1 + s_2)s_3} \ket{s_1,s_2,s_3}. $$
-
-This operation can be rewritten as 
-
-$$ \ket{s_1,s_2,s_3} \to (-1)^{s_1s_3} (-1)^{s_2s_3} \ket{s_1,s_2,s_3} $$
-
-which is equivalent to applying two CZ gates. Can we do better with a direct implementation? 
-
-Fig.5 and Fig.6 gives a recap of the two gates we are looking for in a Fock state formalism.
-
-<p align="center">
-<img src="images/toffoli.png">
-</p> 
-
-<p align="center">
-<img src="images/special_cz.png">
-</p> 
-
-Note that the behavior of the gates is not defined for larger number of photons. We do not care as these cases will never happen if we stay in the chosen encoding.
-
 **Insights**
 
 Both analytical and numerical work are promising leads. Feel free to choose the ones you prefer/feel is the more promising! Keep in mind that analytical work, if they do not end up with a practical result, will be harder to judge than numerical results. 
@@ -145,7 +121,7 @@ Both analytical and numerical work are promising leads. Feel free to choose the 
 
 1. Start by reproducing the results from [5]. Do not necessary follow the exact same method. The goal is to have a code that can recover a CZ gate with success probability 2/27. 
 2. Then reproduce the results from [6], either by applying your method from Question 1 or by designing a new method. 
-3. More exploratory work is to find better implementations for both the Toffoli and the CZ gate in hybrid encoding.
+3. More exploratory work is to find better implementations for both the Toffoli and the CCZ gate in hybrid encoding.
 4. Any theoretical result is welcomed! Proofs that the current implementations are optimal with respect to any metrics (success probability, number of photons, etc.) are of particular interest.
 
 Your mentors for this challenge will be Pierre-Emmanuel Emeriau and Samuel Horsch (on site) and Alexia Salavrakos and Timothé Goubalt (on Slack).
@@ -182,7 +158,7 @@ As your work will be autograded, the main branch of your git repository is requi
 ├── requirements.txt
 ├── README.md
 ```
-- main.py should contain a method called "get_CCZ" and/or "get_CZ" with no argument that return a perceval Processor
+- main.py should contain a method called "get_CCZ" with no argument that return a perceval Processor
 - requirements.txt should contain all your scripts' python module dependencies, and follow the [requirements format](https://pip.pypa.io/en/stable/reference/requirements-file-format/)
 - README.md explains how to use your script and how you came up with this result(s)
 
@@ -240,8 +216,34 @@ Output:
 01	0	1	0	0
 10	0	0	0	1
 11	0	0	1	0
-performance = 1/9, fidelity = 100.0%
+performance = 0.074066, fidelity = 0.9999999915267557
 ```
+
+### Bonus 
+
+If you think you have successfully answered the challenge above but that sleeping is cheating, we have an extra challenging question for you. It's a bit more tricky than the first one so you shouldn't address this if you have not completed the first challenge. 
+
+This challenge is about a special CZ gate in an __hybrid__ qubit encoding. We slightly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits (resp. $s_1$ and $s_2$) and the third mode that encodes the state $\ket{1}$ of the third qubit ($s_3$), we want to do the operation 
+
+$$ \ket{s_1,s_2,s_3} \to (-1)^{(s_1 + s_2)s_3} \ket{s_1,s_2,s_3}. $$
+
+This operation can be rewritten as 
+
+$$ \ket{s_1,s_2,s_3} \to (-1)^{s_1s_3} (-1)^{s_2s_3} \ket{s_1,s_2,s_3} $$
+
+which is equivalent to applying two CZ gates. Can we do better with a direct implementation? 
+
+Fig.5 and Fig.6 gives a recap of the two gates we are looking for in a Fock state formalism.
+
+<p align="center">
+<img src="images/toffoli.png">
+</p> 
+
+<p align="center">
+<img src="images/special_cz.png">
+</p> 
+
+Note that the behavior of the gates is not defined for larger number of photons. We do not care as these cases will never happen if we stay in the chosen encoding.
 
 Good luck!
 

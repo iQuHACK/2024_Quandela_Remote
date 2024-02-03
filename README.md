@@ -129,7 +129,7 @@ Your mentors for this challenge will be Pierre-Emmanuel Emeriau and Samuel Horsc
 ## 5. How to use Perceval to create a gate
 
 ### What is Perceval
-Perceval is Quandela quantum simulation framework which **must** be used to solve any of these challenges
+Perceval is Quandela's quantum simulation framework which **must** be used to solve any of these challenges
 
 Perceval provides tools for composing circuits from linear optical components, defining single-photon sources, manipulating Fock states, running simulations, reproducing published experimental papers and experimenting with a new generation of quantum algorithms.
 
@@ -170,6 +170,8 @@ Our autograder will rate 4 parameters, from the most to the less important:
 - Performance
 - Number of Photon (ancillaries included)
 - Number of Modes (heralds and ancillaries included)
+
+The file auto_grader.py can show you the exact cost function that will be used to grade your processor. You can see at the bottom of this file how the criteria are defined. You can actually execute auto_grader.py to see our postprocessed ccz grade. This can be useful to define your loss function.
 
 #### Fidelity
 Our Fidelity is the distance between your gate and the theoretical perfect one. It's calculating with the distance between probabilities.

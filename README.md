@@ -21,7 +21,7 @@ and the output state is given by
 
 $$ \ket{\psi_{out}} = \frac{1}{\sqrt{s_1! s_2! ... s_m!}} \prod_{i=1}^n \bigg(\sum_{j=1}^m u_{ji} a_j^{\dagger} \bigg)^{s_i} \ket{000...0}.$$ 
 
-Developping the product gives a linear superposition of Fock states:
+Developing the product gives a linear superposition of Fock states:
 
 $$ \ket{\psi_{out}} = \frac{1}{\sqrt{s_1! s_2! ... s_m!}} \sum_{t \in \Phi_{m,n}} \alpha_t \sqrt{t_1!...t_m!} \ket{t_1,t_2,...,t_m}.$$ 
 
@@ -95,9 +95,7 @@ and postselecting on the two auxiliary modes ensures we get the correct result.
 
 #### 4. Goal of the challenge 
 
-The goal of this challenge is to better understand the link between the linear optical circuit as a unitary on the modes and the resulting unitary operator on the Fock space and how we can design the search of more complex linear optical gates. To assess the quality of your work, we propose two $3$-mode linear optical gates to implement. 
-
-- the CCZ gate. At the qubit level, a CCZ gate applies the operation 
+The goal of this challenge is to better understand the link between the linear optical circuit as a unitary on the modes and the resulting unitary operator on the Fock space and how we can design the search of more complex linear optical gates. To assess the quality of your work, we propose a $3$-mode linear optical gate to implement: the CCZ gate. At the qubit level, a CCZ gate applies the operation 
 
 $$ CCZ \ket{x_1, x_2, x_3} = (-1)^{x_1x_2x_3} \ket{x_1, x_2, x_3} $$ 
 
@@ -115,7 +113,117 @@ In [6], they investigate the numerical search of a Toffoli gate, with promising 
 <img src="images/ccz.png">
 </p> 
 
-- a special CZ gate in an hybrid qubit encoding. We sligthly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits (resp. $s_1$ and $s_2$) and the third mode that encodes the state $\ket{1}$ of the third qubit ($s_3$), we want to do the operation 
+**Insights**
+
+Both analytical and numerical work are promising leads. Feel free to choose the ones you prefer/feel is the more promising! Keep in mind that analytical work, if they do not end up with a practical result, will be harder to judge than numerical results. 
+
+**Suggested guideline**
+
+1. Start by reproducing the results from [5]. Do not necessary follow the exact same method. The goal is to have a code that can recover a CZ gate with success probability 2/27. 
+2. Then reproduce the results from [6], either by applying your method from Question 1 or by designing a new method. 
+3. More exploratory work is to find better implementations for both the Toffoli and the CCZ gate in hybrid encoding.
+4. Any theoretical result is welcomed! Proofs that the current implementations are optimal with respect to any metrics (success probability, number of photons, etc.) are of particular interest.
+
+Your mentors for this challenge will be Pierre-Emmanuel Emeriau and Samuel Horsch (on site) and Alexia Salavrakos and Timothé Goubalt (on Slack).
+
+## 5. How to use Perceval to create a gate
+
+### What is Perceval
+Perceval is Quandela quantum simulation framework which **must** be used to solve any of these challenges
+
+Perceval provides tools for composing circuits from linear optical components, defining single-photon sources, manipulating Fock states, running simulations, reproducing published experimental papers and experimenting with a new generation of quantum algorithms.
+
+You can find documentation regarding Perceval here: https://perceval.quandela.net/docs/
+
+And the source code repository is here: https://github.com/Quandela/Perceval
+
+### Installation & Use
+You have all the installation explanation on the github repository, we advise you to work on the version 0.10.3.
+
+A lot of notebooks are available our github (in docs/source/notebooks) or in our documentation to inspire you.
+
+If you have any issue, please contact either Marion Fabre (on site) or Eric Bertasi or Melvin Mathe (on Slack).
+
+### What we expect
+Create a GitHub repository, either add us (our usernames are in your github challenge repo) or send us the link (if it's public), and commit your code in this repository so we can keep track of your contribution. **Only** the code in the **main** branch will be reviewed and will be part of your evaluation.
+
+The result of your work has to be a locally simulated [**Processor**](https://perceval.quandela.net/docs/reference/processor.html). The Processor class is a composition of a Perceval circuit with input states, ports and heralding function.
+
+We **strongly** advise that you checkout the Perceval code and go read how we design our own gates in Perceval in perceval/components/core_catalog (or at least visit this github online [directory](https://github.com/Quandela/Perceval/tree/main/perceval/components/core_catalog) )
+
+As your work will be autograded, the main branch of your git repository is required to follow this file architecture:
+```
+.
+├── main.py
+├── requirements.txt
+├── README.md
+```
+- main.py should contain a method called "get_CCZ" with no argument that return a perceval Processor
+- requirements.txt should contain all your scripts' python module dependencies, and follow the [requirements format](https://pip.pypa.io/en/stable/reference/requirements-file-format/)
+- README.md explains how to use your script and how you came up with this result(s)
+
+Other files can be included in you git repository (like other python files, jupyter notebook, ...) but they will not be use by our autograder, nevertheless those files could be use to give you bonus point if you are selected as finalist.
+
+### How the autograde works
+Our autograder will rate 4 parameters, from the most to the less important:
+- Fidelity
+- Performance
+- Number of Photon (ancillaries included)
+- Number of Modes (heralds and ancillaries included)
+
+#### Fidelity
+Our Fidelity is the distance between your gate and the theoretical perfect one. It's calculating with the distance between probabilities.
+
+#### Performance
+This is a ratio of how many measurement we keep and how many measurement we throw away.
+
+For instance, for Knill's CZ gate, the performance as stated above is 2/27.
+
+#### Analyzer object
+To get Fidelity and Performance, you can use the Analyzer. 
+
+This object has been presented in the remote Perceval workshop with the notebook "Getting started with Perceval".
+
+Since the Analyzer can only inspect logical space, you can change your CZ or CCZ gate to CNOT or CCNOT (Toffoli) by adding Hadamard gates around the data qubit:
+``` python
+import perceval as pcvl
+
+processor = pcvl.Processor("SLOS", 4)
+processor.add(2, pcvl.BS.H())
+processor.add(0, pcvl.catalog["heralded cz"].build_processor())
+processor.add(2, pcvl.BS.H())
+
+states = {
+    pcvl.BasicState([1, 0, 1, 0]): "00",
+    pcvl.BasicState([1, 0, 0, 1]): "01",
+    pcvl.BasicState([0, 1, 1, 0]): "10",
+    pcvl.BasicState([0, 1, 0, 1]): "11"
+}
+
+ca = pcvl.algorithm.Analyzer(processor, states)
+
+truth_table = {"00": "00", "01": "01", "10": "11", "11": "10"}
+ca.compute(expected=truth_table)
+
+pcvl.pdisplay(ca)
+print(
+    f"performance = {ca.performance}, fidelity = {ca.fidelity.real}")
+```
+Output:
+```bash
+    00	01	10	11
+00	1	0	0	0
+01	0	1	0	0
+10	0	0	0	1
+11	0	0	1	0
+performance = 0.074066, fidelity = 0.9999999915267557
+```
+
+### Bonus 
+
+If you think you have successfully answered the challenge above but that sleeping is cheating, we have an extra challenging question for you. It's a bit more tricky than the first one so you shouldn't address this if you have not completed the first challenge. 
+
+This challenge is about a special CZ gate in an __hybrid__ qubit encoding. We slightly deviate from the dual rail encoding. Two qubits are encoded in one photon and 4 modes and a third qubit is encoded as one photon with 2 modes. We want to apply a CZ gate between one of the first two qubits and the third qubit. Without loss of generality, let's assume we want to do CNOT(2,3). At the Fock state level, given the modes that encode the states $\ket{01}$ and $\ket{11}$ of the first two qubits (resp. $s_1$ and $s_2$) and the third mode that encodes the state $\ket{1}$ of the third qubit ($s_3$), we want to do the operation 
 
 $$ \ket{s_1,s_2,s_3} \to (-1)^{(s_1 + s_2)s_3} \ket{s_1,s_2,s_3}. $$
 
@@ -137,20 +245,7 @@ Fig.5 and Fig.6 gives a recap of the two gates we are looking for in a Fock stat
 
 Note that the behavior of the gates is not defined for larger number of photons. We do not care as these cases will never happen if we stay in the chosen encoding.
 
-**Insights**
-
-Both analytical and numerical work are promising leads. Feel free to choose the ones you prefer/feel is the more promising! Keep in mind that analytical work, if they do not end up with a practical result, will be harder to judge than numerical results. 
-
-**Suggested guideline**
-
-1. Start by reproducing the results from [5]. Do not necessary follow the exact same method. The goal is to have a code that can recover a CZ gate with success probability 2/27. 
-2. Then reproduce the results from [6], either by applying your method from Question 1 or by designing a new method. 
-3. More exploratory work is to find better implementations for both the Toffoli and the CZ gate in hybrid encoding.
-4. Any theoretical result is welcomed! Proofs that the current implementations are optimal with respect to any metrics (success probability, number of photons, etc.) are of particular interest.
-
-**Work evaluation**
-
-
+Good luck!
 
 #### References 
 
